@@ -1,28 +1,20 @@
-import React, { useEffect } from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import {
-  RouterProvider,
-  createBrowserRouter,
-  useLocation
-} from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Error from "./pages/error/Error";
-
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
+import Loading from "./pages/loading/Loading";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />
+    element: [
+      <Suspense fallback={<Loading />}>
+        <Home />
+      </Suspense>
+    ]
   },
   {
     path: "*",
@@ -34,7 +26,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-    <ScrollToTop />
     <App />
   </React.StrictMode>
 );
