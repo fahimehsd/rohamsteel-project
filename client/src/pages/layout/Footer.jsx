@@ -11,8 +11,8 @@ import { FaTelegram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className=" p-5 bg-black-100 flex items-center justify-center gap-20 ">
-      <div className="w-full  flex flex-col items-center">
+    <div className="sm:max-w-full flex flex-col items-center justify-center gap-20 rounded-t-3xl p-5 bg-black-100 md:flex-row">
+      <div className="w-full flex flex-col items-center">
         <div>
           <img src={logo} alt="" />
           <img src={name} alt="" />
@@ -28,7 +28,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="w-full">
-        <div className="flex items-center justify-center gap-5 border-y-2  border-red-500 h-24 w-[50rem]">
+        <div className="flex items-center justify-center gap-5 border-y-2  border-red-500 h-24">
           <a href="tel:02188677045">
             <AiOutlinePhone className="w-10 h-10" />
           </a>
@@ -46,8 +46,8 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div className="w-full flex justify-center">
-        <div className=" flex flex-col justify-center items-center">
+      <div className="w-full flex justify-center text-center">
+        <div>
           <p>نظرات خود را با ما در میان بگذارید</p>
           <form
             action="https://getform.io/"
