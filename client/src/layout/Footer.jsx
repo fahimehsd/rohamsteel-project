@@ -1,6 +1,7 @@
 import React from "react";
-import logo from "../../assets/logo1.png";
-import name from "../../assets/name.png";
+import logo from "../assets/images/logo/logo1.png";
+import name from "../assets/images/logo/name.png";
+
 import {
   AiOutlineInstagram,
   AiOutlineLinkedin,
