@@ -1,14 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  direction: rtl;
-}
-html,
-body {
-  font-family: "Scheherazade New", serif;
-}
