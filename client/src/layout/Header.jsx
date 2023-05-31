@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import logo from "../assets/images/logo/logo.png";
 
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 import { AiOutlineMail, AiOutlinePhone, AiOutlineSearch } from "react-icons/ai";
 import { RxEnter } from "react-icons/rx";
 
@@ -28,23 +28,28 @@ const Header = () => {
   const links = [
     {
       id: 1,
-      link: "صفحه نخست"
+      link: "صفحه نخست",
+      path: "/"
     },
     {
       id: 2,
-      link: "معرفی شرکت"
+      link: "معرفی شرکت",
+      path: "/intro"
     },
     {
       id: 3,
-      link: "محصولات"
+      link: "محصولات",
+      path: "/products"
     },
     {
       id: 4,
-      link: "اخبار"
+      link: "اخبار",
+      path: "/news"
     },
     {
       id: 5,
-      link: "تماس با ما"
+      link: "تماس با ما",
+      path: "/contact"
     }
   ];
 
@@ -69,7 +74,7 @@ const Header = () => {
                 key={link.id}
                 className="px-5 py-3 my-3 cursor-pointer capitalize font-semibold focus:border-b-[1px]  focus:text-red-500 focus:border-b-red-500 hover:scale-105 duration-200"
               >
-                <Link to={link.link} smooth duration={500}>
+                <Link to={link.path} smooth duration={500}>
                   {link.link}
                 </Link>
               </button>
