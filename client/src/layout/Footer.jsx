@@ -12,7 +12,7 @@ import { FaTelegram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="sm:max-w-full flex flex-col items-center justify-center gap-20 rounded-t-3xl p-5 bg-black-100 md:flex-row">
+    <div className="sm:max-w-full flex flex-col items-center justify-center gap-20 p-5 bg-black-100 md:flex-row">
       <div className="w-full flex flex-col items-center">
         <div>
           <img src={logo} alt="" />
