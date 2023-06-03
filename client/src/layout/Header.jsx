@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import {
-  AiOutlineMail,
-  AiOutlineMenu,
-  AiOutlinePhone,
-  AiOutlineSearch
-} from "react-icons/ai";
+// import {
+//   AiOutlineMail,
+//   AiOutlineMenu,
+//   AiOutlinePhone,
+//   AiOutlineSearch
+// } from "react-icons/ai";
 import logo from "../assets/images/logo/logo.png";
 
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
+import { AiOutlineMail, AiOutlinePhone, AiOutlineSearch } from "react-icons/ai";
+import { RxEnter } from "react-icons/rx";
 
 const Header = () => {
   const [nav, setNav] = useState(false);
@@ -26,23 +28,28 @@ const Header = () => {
   const links = [
     {
       id: 1,
-      link: "صفحه نخست"
+      link: "صفحه نخست",
+      path: "/"
     },
     {
       id: 2,
-      link: "معرفی شرکت"
+      link: "معرفی شرکت",
+      path: "/intro"
     },
     {
       id: 3,
-      link: "محصولات"
+      link: "محصولات",
+      path: "/products"
     },
     {
       id: 4,
-      link: "اخبار"
+      link: "اخبار",
+      path: "/news"
     },
     {
       id: 5,
-      link: "تماس با ما"
+      link: "تماس با ما",
+      path: "/contact"
     }
   ];
 
@@ -50,94 +57,123 @@ const Header = () => {
     <header
       className={
         color
-          ? "flex justify-between items-center w-full px-4 bg-white text-black fixed "
-          : "flex justify-between items-center w-full px-4 bg-transparent text-black fixed"
+          ? "flex justify-between py-3 w-full px-6 bg-black-100 text-black fixed z-10 duration-300"
+          : "flex justify-between py-3 w-full px-6 bg-transparent text-black fixed z-10 duration-300"
       }
     >
-      <div>
+      <div className="w-full">
         <img
           src={logo}
           alt="شرکت صنایع فولاد رهام پارس"
-          className="w-[6rem] sm:w-56 pt-3"
+          className="w-[6rem] sm:w-60"
         />
         <div>
-          <ul className="hidden md:flex">
+          <div className="hidden md:flex mt-3">
             {links.map((link) => (
-              <li>
+              <Link to={link.path} smooth duration={500}>
                 <button
                   key={link.id}
-                  className="px-3 py-3 my-3 cursor-pointer capitalize font-semibold text-gray-600 border-r-[1px] focus:border-b-[1px] focus:border-b-red-500 focus:text-red-500 focus:border-r-red-500 hover:scale-105 duration-200"
+                  className="px-5 py-3 my-3 cursor-pointer capitalize font-semibold focus:border-b-[1px]  focus:text-red-500 focus:border-b-red-500 hover:scale-105 duration-200"
                 >
-                  <Link to={link.link} smooth duration={500}>
-                    {link.link}
-                  </Link>
+                  {link.link}
                 </button>
-              </li>
+              </Link>
             ))}
-          </ul>
+          </div>
         </div>
 
         <div
           onClick={() => setNav(!nav)}
-          className="cursor-pointer pr-4 z-10 text-black-600 md:hidden "
+          className="cursor-pointer pr-4 z-10 text-black-600 md:hidden mt-7 "
         >
           {nav ? <FaTimes size={25} /> : <FaBars size={25} />}
         </div>
 
         {nav && (
-          <ul className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
-            {links.map(({ id, link }) => (
-              <li
-                key={id}
-                className="px-4 cursor-pointer capitalize py-6 text-4xl"
+          <div className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
+            {links.map(({ id, link, path }) => (
+              <Link
+                onClick={() => setNav(!nav)}
+                to={path}
+                smooth
+                duration={500}
               >
-                <Link
-                  onClick={() => setNav(!nav)}
-                  to={link}
-                  smooth
-                  duration={500}
+                <button
+                  key={id}
+                  className="px-4 cursor-pointer capitalize py-6 text-4xl"
                 >
                   {link}
-                </Link>
-              </li>
+                </button>
+              </Link>
             ))}
-          </ul>
+          </div>
         )}
+      </div>
+      <div className="w-full flex flex-col items-end">
+        <div className="w-[9rem] sm:w-[20rem] bg-black-200 flex items-center gap-2 p-1 sm:p-2 rounded-md ">
+          <AiOutlineSearch size={25} color="gray" />
+          <input
+            type="text"
+            placeholder="جست و جو کنید.."
+            className="bg-transparent placeholder:text-white outline-none text-xs sm:text-md"
+          />
+        </div>
+        <div className="flex justify-end items-center mt-3">
+          <div>
+            <a
+              href="tel:02188677045"
+              className="flex justify-end items-center gap-1 text-sm sm:text-lg"
+            >
+              <p
+                className={
+                  color
+                    ? "text-black-500 duration-300"
+                    : "text-black-100 duration-300"
+                }
+              >
+                02188677045-6
+              </p>
+              <AiOutlinePhone size={20} className="text-[#cd151d] " />
+            </a>
+            <a
+              href="mailto:info@RohamSteel.com+"
+              className="flex items-center gap-1 text-sm sm:text-lg"
+            >
+              <p
+                className={
+                  color
+                    ? "text-black-500 duration-300"
+                    : "text-black-100 duration-300"
+                }
+              >
+                info@RohamSteel.com
+              </p>
+              <AiOutlineMail size={18} className="text-[#cd151d] " />
+            </a>
+          </div>
+          <div className="mr-3 text-sm sm:text-lg">
+            <button
+              className={
+                color
+                  ? "text-black-500 duration-300"
+                  : "text-black-200 duration-300"
+              }
+            >
+              <RxEnter
+                size={20}
+                className={
+                  color
+                    ? "text-black-500 duration-300"
+                    : "text-black-200 duration-300"
+                }
+              />
+              ورود
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   );
-  // return (
-  //   <header className="bg-white w-full p-2 fixed top-0 border-b-2 z-10">
-  //     <div className="flex justify-between items-center mb-2">
-  //       <img
-  //         src={logo}
-  //         alt="شرکت صنایع فولاد رهام پارس"
-  //         className="w-[6rem] sm:w-56"
-  //       />
-  //       <div className="min-w-[12rem] bg-gray-200 flex items-center gap-2 p-1 rounded-md text-xs">
-  //         <AiOutlineSearch className="text-sm" />
-  //         <input
-  //           type="text"
-  //           placeholder="جست و جو کنید.."
-  //           className="bg-transparent"
-  //         />
-  //       </div>
-  //     </div>
-  //     <div className="flex justify-between items-center">
-  //       <AiOutlineMenu className="text-[#cd151d] text-xl" />
-  //       <div>
-  //         <div className="flex justify-end items-center gap-1">
-  //           <p>02188677045-6</p>
-  //           <AiOutlinePhone className="text-[#cd151d] text-sm" />
-  //         </div>
-  //         <div className="flex items-center gap-1">
-  //           <p>info@RohamSteel.com</p>
-  //           <AiOutlineMail className="text-[#cd151d] text-sm" />
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </header>
-  // );
 };
 
 export default Header;

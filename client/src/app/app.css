@@ -1,4 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap");
+@media only screen and (max-width: 600px) {
+  .trapezoid {
+    width: 50vw;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 100% 20vw;
+    border-color: transparent transparent gray transparent;
+    opacity: 0.6;
+  }
+}
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +18,7 @@ html,
 body {
   font-family: "Scheherazade New", serif;
 }
+
 .trapezoid {
   width: 50vw;
   height: 0;
