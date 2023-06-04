@@ -6,6 +6,7 @@ import Home from "../pages/home/Home";
 import Error from "../pages/error/Error";
 import Intro from "../pages/intro/Intro";
 import Products from "../pages/products/Products";
+import MainNews from "../components/news/MainNews";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
         element: [
           <Suspense fallback={<Loading />}>
             <Products />
+          </Suspense>
+        ]
+      },
+      {
+        path: "/news",
+        element: [
+          <Suspense fallback={<Loading />}>
+            <MainNews />
           </Suspense>
         ]
       }
