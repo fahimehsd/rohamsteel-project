@@ -27,3 +27,15 @@ body {
   border-color: transparent transparent gray transparent;
   opacity: 0.6;
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cd151d;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #cccccc;
+}
