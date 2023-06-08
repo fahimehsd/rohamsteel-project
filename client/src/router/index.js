@@ -6,8 +6,8 @@ import Home from "../pages/home/Home";
 import Error from "../pages/error/Error";
 import Intro from "../pages/intro/Intro";
 import Products from "../pages/products/Products";
-import MainNews from "../components/news/MainNews";
-import Contact from "../components/contact/Contact";
+import MainNews from "../pages/news/MainNews";
+import Contact from "../pages/contact/Contact";
 
 const router = createBrowserRouter([
   {
