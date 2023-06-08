@@ -27,7 +27,7 @@ const MainNews = () => {
   return (
     <div className="flex w-full min-h-screen bg-gradient-to-b from-black-300 via-black-200 to-black-100 pt-44 p-10 leading-relaxed text-lg">
       <div className="flex flex-col w-1/2">
-        <div className=" relative">
+        <div className="relative">
           <img
             src={`http://localhost:1337${theLatest[3]?.attributes?.img?.data?.attributes?.formats?.small?.url}`}
             alt=""
