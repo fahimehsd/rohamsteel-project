@@ -8,11 +8,13 @@ import React, { useState } from "react";
 import logo from "../assets/images/logo/logo.png";
 
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMail, AiOutlinePhone, AiOutlineSearch } from "react-icons/ai";
 import { RxEnter } from "react-icons/rx";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   const [nav, setNav] = useState(false);
   const [color, setColor] = useState(false);
   const changeColor = () => {
@@ -151,7 +153,10 @@ const Header = () => {
               <AiOutlineMail size={18} className="text-[#cd151d] " />
             </a>
           </div>
-          <div className="mr-3 text-sm sm:text-lg">
+          <div
+            className="mr-3 text-sm sm:text-lg"
+            onClick={() => navigate("/enter")}
+          >
             <button
               className={
                 color
