@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Pagination from "../../components/pagination/Pagination";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const MainNews = () => {
+  const navigate = useNavigate();
+
   const [news, setNews] = useState([]);
 
   useEffect(() => {
@@ -9,10 +12,9 @@ const MainNews = () => {
       .get("http://localhost:1337/api/news?populate=img")
       .then((res) => setNews(res.data.data));
   }, []);
-  console.log(news);
 
   const theLatest = news.slice(-4);
-  console.log(theLatest);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(5);
 
@@ -27,7 +29,10 @@ const MainNews = () => {
   return (
     <div className="flex w-full min-h-screen bg-gradient-to-b from-black-300 via-black-200 to-black-100 pt-44 p-10 leading-relaxed text-lg">
       <div className="flex flex-col w-1/2">
-        <div className="relative">
+        <div
+          className="relative"
+          onClick={() => navigate(`/newsDetails/${theLatest[3].id}`)}
+        >
           <img
             src={`http://localhost:1337${theLatest[3]?.attributes?.img?.data?.attributes?.formats?.small?.url}`}
             alt=""
@@ -41,7 +46,10 @@ const MainNews = () => {
           </div>
         </div>
         <div className="flex">
-          <div className=" relative">
+          <div
+            className=" relative"
+            onClick={() => navigate(`/newsDetails/${theLatest[2].id}`)}
+          >
             <img
               src={`http://localhost:1337${theLatest[2]?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url}`}
               alt=""
@@ -54,7 +62,10 @@ const MainNews = () => {
               </p>
             </div>
           </div>
-          <div className="relative">
+          <div
+            className="relative"
+            onClick={() => navigate(`/newsDetails/${theLatest[1].id}`)}
+          >
             <img
               src={`http://localhost:1337${theLatest[1]?.attributes?.img?.data?.attributes?.formats?.small?.url}`}
               alt=""
@@ -78,7 +89,7 @@ const MainNews = () => {
               <div
                 key={news.id}
                 className="my-10 pb-5 cursor-pointer flex items-center gap-5 border-b-2 border-black-500 last-of-type:border-0"
-                onClick={() => {}}
+                onClick={() => navigate(`/newsDetails/${news.id}`)}
               >
                 <img
                   src={`http://localhost:1337${news?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url}`}
