@@ -8,6 +8,8 @@ import Intro from "../pages/intro/Intro";
 import Products from "../pages/products/Products";
 import MainNews from "../pages/news/MainNews";
 import Contact from "../pages/contact/Contact";
+import NewsDetails from "../pages/newsDetails/NewsDetails";
+import Enter from "../pages/enter/Enter";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +53,22 @@ const router = createBrowserRouter([
         element: [
           <Suspense fallback={<Loading />}>
             <Contact />
+          </Suspense>
+        ]
+      },
+      {
+        path: "/newsDetails/:id",
+        element: [
+          <Suspense fallback={<Loading />}>
+            <NewsDetails />
+          </Suspense>
+        ]
+      },
+      {
+        path: "/enter",
+        element: [
+          <Suspense fallback={<Loading />}>
+            <Enter />
           </Suspense>
         ]
       }

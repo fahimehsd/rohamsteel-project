@@ -1,6 +1,18 @@
-import React from "react";
-import img from "../../assets/news/news1.jpg";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 const News = () => {
+  const navigate = useNavigate();
+
+  const [news, setNews] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:1337/api/news?populate=img`)
+      .then((res) => setNews(res.data.data));
+  }, []);
+
   return (
     <div
       name="news"
@@ -12,45 +24,24 @@ const News = () => {
           <p>مطالب بیشتر..</p>
         </div>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 px-12 sm:px-0">
-          <div className="shadow-md shadow-gray-600 rounded-lg">
-            <img
-              src={img}
-              alt="news"
-              className="rounded-md duration-200 hover:scale-105"
-            />
-            <div className="p-4 flex flex-wrap">
-              <button className="w-full font-bold duration-200 hover:scale-105">
-                عزم جدی وزارت صمت برای ایجاد تحول در بخش معدن/ داشتن برنامه‌ریزی
-                دقیق برای نقش‌آفرینی فعال و هم‌افزا برای رشد تولید در بخش معدن
-              </button>
-            </div>
-          </div>
-          <div className="shadow-md shadow-gray-600 rounded-lg">
-            <img
-              src={img}
-              alt="news"
-              className="rounded-md duration-200 hover:scale-105"
-            />
-            <div className="p-4 flex flex-wrap">
-              <button className="w-full font-bold duration-200 hover:scale-105">
-                عزم جدی وزارت صمت برای ایجاد تحول در بخش معدن/ داشتن برنامه‌ریزی
-                دقیق برای نقش‌آفرینی فعال و هم‌افزا برای رشد تولید در بخش معدن
-              </button>
-            </div>
-          </div>
-          <div className="shadow-md shadow-gray-600 rounded-lg">
-            <img
-              src={img}
-              alt="news"
-              className="rounded-md duration-200 hover:scale-105"
-            />
-            <div className="p-4 flex flex-wrap">
-              <button className="w-full font-bold duration-200 hover:scale-105">
-                عزم جدی وزارت صمت برای ایجاد تحول در بخش معدن/ داشتن برنامه‌ریزی
-                دقیق برای نقش‌آفرینی فعال و هم‌افزا برای رشد تولید در بخش معدن
-              </button>
-            </div>
-          </div>
+          {news.slice(0, 3).map((news) => {
+            return (
+              <div
+                onClick={() => navigate(`/newsDetails/${news.id}`)}
+                key={news.id}
+                className="flex flex-col items-center shadow-md shadow-gray-600 rounded-lg"
+              >
+                <img
+                  src={`http://localhost:1337${news?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url}`}
+                  alt="news"
+                  className="rounded-md duration-200 hover:scale-105"
+                />
+                <p className="p-4 flex flex-wrap text-center w-full font-bold duration-200 hover:scale-105">
+                  {news?.attributes?.title}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
