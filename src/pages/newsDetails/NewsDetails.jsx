@@ -1,38 +1,28 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import json from "../../json/db.json";
 const NewsDetails = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const id = pathname.slice(13);
-
-  const [news, setNews] = useState([]);
-  const [allNews, setAllNews] = useState([]);
-  useEffect(() => {
-    axios
-      .get(`http://localhost:1337/api/news/${id}?populate=img`)
-      .then((res) => setNews(res.data.data));
-    axios
-      .get(`http://localhost:1337/api/news?populate=img`)
-      .then((res) => setAllNews(res.data.data));
-  }, [id]);
+  const allNews = json.news;
+  const news = allNews[id - 1];
 
   return (
     <div className="flex flex-col w-full gap-10 min-h-screen bg-gradient-to-b from-black-300 via-black-200 to-black-100 pt-44 p-10 leading-relaxed text-lg">
       <div>
         <div className="">
           <img
-            src={`http://localhost:1337${news?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url}`}
+            src={`${news?.image}`}
             alt=""
             className="w-[60rem] h-[40rem] mr-10 mb-10 float-left shadow-md rounded-md flex-[40%] hover:scale-100 duration-300"
           />
         </div>
         <p className=" text-3xl font-bold leading-relaxed mb-5 text-center">
-          {news?.attributes?.title}
+          {news?.title}
         </p>
         <p className="leading-relaxed text-xl first-letter:pr-8">
-          {news?.attributes?.desc}
+          {news?.desc}
         </p>
       </div>
       <div className="flex flex-col gap-10">
@@ -46,14 +36,9 @@ const NewsDetails = () => {
                 onClick={() => navigate(`/newsDetails/${news.id}`)}
               >
                 <div className="border p-2 mb-2 border-black-500 rounded-sm shadow-md hover:scale-105 duration-300">
-                  <img
-                    src={`http://localhost:1337${news?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url}`}
-                    alt=""
-                  />
+                  <img src={`${news?.image}`} alt="" />
                 </div>
-                <p className="font-bold text-center">
-                  {news?.attributes?.title}
-                </p>
+                <p className="font-bold text-center">{news?.title}</p>
               </div>
             );
           })}

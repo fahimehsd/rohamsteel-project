@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Pagination from "../../components/pagination/Pagination";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import json from "../../json/db.json";
 const MainNews = () => {
   const navigate = useNavigate();
-
-  const [news, setNews] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:1337/api/news?populate=img")
-      .then((res) => setNews(res.data.data));
-  }, []);
-
+  const news = json.news;
   const theLatest = news.slice(-4);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,32 +26,22 @@ const MainNews = () => {
           onClick={() => navigate(`/newsDetails/${theLatest[3].id}`)}
         >
           <img
-            src={`http://localhost:1337${theLatest[3]?.attributes?.img?.data?.attributes?.formats?.small?.url}`}
+            src={`${theLatest[3]?.image}`}
             alt=""
             className="w-full h-full bg-contain"
           />
           <div class="absolute bottom-0 left-0 right-0 px-4 py-4 bg-black-800 opacity-70 hover:scale-105 duration-300">
-            <p class="mt-2 text-sm text-gray-100">
-              {" "}
-              {theLatest[3]?.attributes?.title}
-            </p>
+            <p class="mt-2 text-sm text-gray-100">{theLatest[3]?.title}</p>
           </div>
         </div>
         <div className="flex">
           <div
-            className=" relative"
+            className=" relative w-full h-full"
             onClick={() => navigate(`/newsDetails/${theLatest[2].id}`)}
           >
-            <img
-              src={`http://localhost:1337${theLatest[2]?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url}`}
-              alt=""
-              className="w-full h-full bg-contain"
-            />
+            <img src={`${theLatest[2]?.image}`} alt="" className=" bg-cover" />
             <div class="absolute bottom-0 left-0 right-0 px-4 py-4 bg-black-800 opacity-70 hover:scale-105 duration-300">
-              <p class="mt-2 text-sm text-gray-100">
-                {" "}
-                {theLatest[2]?.attributes?.title}
-              </p>
+              <p class="mt-2 text-sm text-gray-100"> {theLatest[2]?.title}</p>
             </div>
           </div>
           <div
@@ -67,14 +49,12 @@ const MainNews = () => {
             onClick={() => navigate(`/newsDetails/${theLatest[1].id}`)}
           >
             <img
-              src={`http://localhost:1337${theLatest[1]?.attributes?.img?.data?.attributes?.formats?.small?.url}`}
+              src={`${theLatest[1]?.image}`}
               alt=""
               className="w-full h-full bg-contain"
             />
             <div class="absolute bottom-0 left-0 right-0 px-4 py-4 bg-black-800 opacity-70 hover:scale-105 duration-300">
-              <p class="mt-2 text-sm text-gray-100">
-                {theLatest[1]?.attributes?.title}
-              </p>
+              <p class="mt-2 text-sm text-gray-100">{theLatest[1]?.title}</p>
             </div>
           </div>
         </div>
@@ -92,16 +72,16 @@ const MainNews = () => {
                 onClick={() => navigate(`/newsDetails/${news.id}`)}
               >
                 <img
-                  src={`http://localhost:1337${news?.attributes?.img?.data?.attributes?.formats?.thumbnail?.url}`}
+                  src={`${news?.image}`}
                   alt=""
                   className="w-60 h-40 hover:scale-105 duration-300"
                 />
                 <div>
                   <p className="text-xl sm:text-2xl font-bold inline">
-                    {news?.attributes?.title}
+                    {news?.title}
                   </p>
                   <button className="text-right">
-                    {news?.attributes?.desc.substring(0, 100)}..
+                    {news?.desc.substring(0, 100)}..
                   </button>
                 </div>
               </div>
