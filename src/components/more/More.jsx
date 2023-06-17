@@ -6,17 +6,17 @@ const More = () => {
       name="about"
       className="w-full h-full bg-gradient-to-b from-black-300 via-black-200 to-black-100 text-black"
     >
-      <div className="max-w-screen-lg p-4 mx-auto flex flex-col w-full h-full">
+      <div className="max-w-screen-lg p-4 mx-auto py-40 flex flex-col items-center justify-center sm:items-start w-full h-full">
         <div className="pb-8">
           <p className="text-3xl sm:text-4xl font-bold inline border-b-4 border-black-500">
             مطالب بیشتر
           </p>
         </div>
-        <div className="flex items-center gap-5 mb-8 p-2 shadow-lg">
+        <div className="flex flex-col sm:flex-row items-center gap-5 mb-8 p-2 shadow-lg">
           <img
             src={img}
             alt=""
-            className="w-80 h-auto hover:scale-105 duration-300"
+            className="w-80 h-auto mb-5 hover:scale-105 duration-300"
           />
           <p>
             به گزارش روابط عمومی سازمان توسعه و نوسازی معادن و صنایع معدنی
@@ -36,11 +36,11 @@ const More = () => {
             درصدی مصرف فولاد به پایان رساند.
           </p>
         </div>
-        <div className="flex items-center gap-5 mb-8  p-2 shadow-lg">
+        <div className="flex flex-col sm:flex-row items-center gap-5 mb-8 p-2 shadow-lg">
           <img
             src={img}
             alt=""
-            className="w-80 h-auto hover:scale-105 duration-300"
+            className="w-80 h-auto mb-5 hover:scale-105 duration-300"
           />
           <p>
             به گزارش روابط عمومی سازمان توسعه و نوسازی معادن و صنایع معدنی
@@ -60,11 +60,11 @@ const More = () => {
             درصدی مصرف فولاد به پایان رساند.
           </p>
         </div>
-        <div className="flex items-center gap-5 mb-8  p-2 shadow-lg">
+        <div className="flex flex-col sm:flex-row items-center gap-5 mb-8 p-2 shadow-lg">
           <img
             src={img}
             alt=""
-            className="w-80 h-auto hover:scale-105 duration-300"
+            className="w-80 h-auto mb-5 hover:scale-105 duration-300"
           />
           <p>
             به گزارش روابط عمومی سازمان توسعه و نوسازی معادن و صنایع معدنی

@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-// import {
-//   AiOutlineMail,
-//   AiOutlineMenu,
-//   AiOutlinePhone,
-//   AiOutlineSearch
-// } from "react-icons/ai";
 import logo from "../assets/images/logo/logo.png";
-
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineMail, AiOutlinePhone, AiOutlineSearch } from "react-icons/ai";
@@ -63,14 +56,14 @@ const Header = () => {
           : "flex justify-between py-3 w-full px-6 bg-transparent text-black fixed z-10 duration-300"
       }
     >
-      <div className="w-full">
+      <div className=" w-full">
         <img
           src={logo}
           alt="شرکت صنایع فولاد رهام پارس"
           className="w-[6rem] sm:w-60"
         />
         <div>
-          <div className="hidden md:flex mt-3">
+          <div className="hidden sm:flex mt-3">
             {links.map((link) => (
               <Link to={link.path} smooth duration={500}>
                 <button
@@ -86,13 +79,17 @@ const Header = () => {
 
         <div
           onClick={() => setNav(!nav)}
-          className="cursor-pointer pr-4 z-10 text-black-600 md:hidden mt-7 "
+          className={
+            color
+              ? "cursor-pointer pr-4 z-10 text-black-500 sm:hidden mt-7 "
+              : "cursor-pointer pr-4 z-10 text-black-100 sm:hidden mt-7"
+          }
         >
           {nav ? <FaTimes size={25} /> : <FaBars size={25} />}
         </div>
 
         {nav && (
-          <div className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-gray-500">
+          <div className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient-to-b from-black to-gray-800 text-black-500">
             {links.map(({ id, link, path }) => (
               <Link
                 onClick={() => setNav(!nav)}
