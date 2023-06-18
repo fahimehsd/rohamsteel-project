@@ -8,7 +8,7 @@ const Contact = () => {
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-black-300 via-black-200 to-black-100 pt-44 p-10 leading-relaxed text-lg">
-      <div className="flex items-center justify-evenly border-b pb-5 border-red-500">
+      <div className="flex flex-col sm:flex-row items-center justify-evenly border-b pb-5 border-red-500">
         <div className="flex flex-col gap-5">
           <p className="text-3xl sm:text-4xl font-bold">
             با <span className="text-red-500"> رهام </span> پارس در تماس باشید
@@ -33,7 +33,7 @@ const Contact = () => {
             </a>
           </div>
         </div>
-        <div className="rounded-sm flex flex-col items-center p-10 bg-black-100 shadow-md">
+        <div className="rounded-sm flex flex-col items-center p-3 my-10 sm:p-10 bg-black-100 shadow-md">
           <p>فرم درخواست همکاری</p>
 
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -100,9 +100,9 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      <div className="flex justify-evenly items-center min-h-screen">
+      <div className="flex flex-col sm:flex-row justify-evenly items-center min-h-screen">
         <div className="flex flex-col gap-10">
-          <p className="text-3xl sm:text-4xl font-bold">
+          <p className="text-2xl sm:text-4xl font-bold">
             آدرس شرکت <span className="text-red-500">رهام</span> پارس
           </p>
           <p>

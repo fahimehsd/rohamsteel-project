@@ -19,8 +19,8 @@ const MainNews = () => {
   const paginateBack = () => setCurrentPage(currentPage - 1);
 
   return (
-    <div className="flex w-full min-h-screen bg-gradient-to-b from-black-300 via-black-200 to-black-100 pt-44 p-10 leading-relaxed text-lg">
-      <div className="flex flex-col w-1/2">
+    <div className="flex flex-col sm:flex-row w-full min-h-screen bg-gradient-to-b from-black-300 via-black-200 to-black-100 pt-44 p-10 leading-relaxed text-lg">
+      <div className="flex flex-col gap-5 sm:w-1/2 w-full">
         <div
           className="relative"
           onClick={() => navigate(`/newsDetails/${theLatest[3].id}`)}
@@ -34,7 +34,7 @@ const MainNews = () => {
             <p class="mt-2 text-sm text-gray-100">{theLatest[3]?.title}</p>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex flex-col gap-5 sm:gap-0 sm:flex-row">
           <div
             className=" relative w-full h-full"
             onClick={() => navigate(`/newsDetails/${theLatest[2].id}`)}
@@ -59,8 +59,8 @@ const MainNews = () => {
           </div>
         </div>
       </div>
-      <div className="w-1/2 mx-10">
-        <p className="text-3xl sm:text-4xl font-bold inline border-b-4 border-black-500">
+      <div className="w-full sm:w-1/2 sm:mx-10 mt-10 text-center sm:text-right">
+        <p className="text-2xl sm:text-4xl font-bold inline border-b-4 border-black-500">
           اخبار شرکت <span className="text-red-500">رهام</span> پارس
         </p>
         <div>
@@ -68,7 +68,7 @@ const MainNews = () => {
             return (
               <div
                 key={news.id}
-                className="my-10 pb-5 cursor-pointer flex items-center gap-5 border-b-2 border-black-500 last-of-type:border-0"
+                className="my-10 pb-5 cursor-pointer flex flex-col sm:flex-row items-center gap-5 border-b-2 border-black-500 last-of-type:border-0"
                 onClick={() => navigate(`/newsDetails/${news.id}`)}
               >
                 <img
@@ -77,10 +77,12 @@ const MainNews = () => {
                   className="w-60 h-40 hover:scale-105 duration-300"
                 />
                 <div>
-                  <p className="text-xl sm:text-2xl font-bold inline">
-                    {news?.title}
-                  </p>
-                  <button className="text-right">
+                  <div className="border-b border-dashed border-black-100 pb-3 mb-3">
+                    <p className="text-xl sm:text-2xl font-bold inline ">
+                      {news?.title}
+                    </p>
+                  </div>
+                  <button className="sm:text-right text-center">
                     {news?.desc.substring(0, 100)}..
                   </button>
                 </div>

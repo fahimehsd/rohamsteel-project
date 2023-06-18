@@ -7,7 +7,9 @@ const Items = ({ data }) => {
     <>
       {data.map((item) => (
         <div className="flex flex-col items-center bg-black-100 rounded-md border-2 border-black-500">
-          <p className="p-3 text-2xl font-bold">محصول شماره {item.id}</p>
+          <p className="p-3 text-xl sm:text-2xl font-bold">
+            محصول شماره {item.id}
+          </p>
           <div className=" relative">
             <img
               src={item.img}
@@ -73,10 +75,10 @@ const Products = () => {
 
   return (
     <div className="w-full h-full bg-gradient-to-b from-black-300 via-black-200 to-black-100 pt-44 p-10 leading-relaxed text-lg">
-      <p className="text-3xl sm:text-4xl font-bold inline border-b-4 border-black-500">
+      <p className="text-xl sm:text-4xl text-center sm:text-right font-bold inline border-b-4 border-black-500">
         محصولات شرکت <span className="text-red-500">رهام</span> پارس
       </p>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 px-12 sm:px-0 mt-10">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 mt-10">
         <Items data={currentPosts} />
       </div>
       <Pagination

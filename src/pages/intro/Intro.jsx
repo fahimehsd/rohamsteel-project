@@ -3,10 +3,10 @@ import React from "react";
 const Intro = () => {
   return (
     <div className="w-full h-full bg-gradient-to-b from-black-300 via-black-200 to-black-100 pt-44 p-10 leading-relaxed text-lg">
-      <p className="text-3xl sm:text-4xl font-bold inline border-b-4 border-black-500">
+      <p className="text-2xl sm:text-4xl font-bold inline border-b-4 border-black-500">
         صنایع فولاد <span className="text-red-500">رهام</span> پارس
       </p>
-      <div className="p-14">
+      <div className="sm:p-14 pt-10">
         <p className=" first-letter:pr-5">
           بررسی تقاضای آهن اسفنجی بیانگر وجود بستر مناسب برای محصولات طرح
           می‌باشد. در كشور ایران میزان تولید آهن اسفنجی از 6.9 میلیون تن در سال
@@ -46,10 +46,10 @@ const Intro = () => {
           </li>
         </ul>
       </div>
-      <p className="text-3xl sm:text-4xl font-bold inline border-b-4 border-black-500">
+      <p className="text-2xl sm:text-4xl font-bold inline border-b-4 border-black-500">
         اهداف شرکت صنایع فولاد <span className="text-red-500">رهام</span> پارس
       </p>
-      <div className="p-14">
+      <div className="sm:p-14 pt-10">
         <p className=" first-letter:pr-5">
           هدف شرکت صنایع فولاد رهام پارس، تولید سالانه 2/1 میلیون تن آهن اسفنجی
           با تأکید بر حفاظت از محیط زیست است به نحوی که با احداث نیروگاه، آب و

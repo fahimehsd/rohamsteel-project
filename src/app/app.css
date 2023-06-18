@@ -1,10 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Scheherazade+New&display=swap");
-@media only screen and (min-width: 320px) {
+/* @media only screen and (min-width: 320px) {
   .trapezoid {
     width: 50vw;
     height: 0;
     border-style: solid;
     border-width: 0 0 110px 20vw;
+    border-color: transparent transparent gray transparent;
+    opacity: 0.6;
+  }
+} */
+@media (min-width: 768px) {
+  .trapezoid {
+    width: 50vw;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 100vh 20vw;
     border-color: transparent transparent gray transparent;
     opacity: 0.6;
   }
@@ -19,14 +29,6 @@ body {
   font-family: "Scheherazade New", serif;
 }
 
-.trapezoid {
-  width: 50vw;
-  height: 0;
-  border-style: solid;
-  border-width: 0 0 100vh 20vw;
-  border-color: transparent transparent gray transparent;
-  opacity: 0.6;
-}
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -38,4 +40,7 @@ body {
 
 ::-webkit-scrollbar-track {
   background-color: #cccccc;
+}
+.bg-gradient {
+  background: linear-gradient(rgba(0, 0, 0, 0.679), gray);
 }
