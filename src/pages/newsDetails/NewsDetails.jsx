@@ -11,23 +11,25 @@ const NewsDetails = () => {
   return (
     <div className="flex flex-col w-full gap-10 min-h-screen bg-gradient-to-b from-black-300 via-black-200 to-black-100 pt-44 p-10 leading-relaxed text-lg">
       <div>
-        <div className="">
+        <div>
           <img
             src={`${news?.image}`}
             alt=""
-            className="w-[60rem] h-[40rem] mr-10 mb-10 float-left shadow-md rounded-md flex-[40%] hover:scale-100 duration-300"
+            className="w-full sm:w-[60rem] sm:h-[40rem] mr-10 mb-10 float-left shadow-md rounded-md flex-[40%] hover:scale-100 duration-300"
           />
         </div>
-        <p className=" text-3xl font-bold leading-relaxed mb-5 text-center">
+
+        <p className="text-2xl sm:text-3xl font-bold leading-relaxed mb-5 text-center">
           {news?.title}
         </p>
-        <p className="leading-relaxed text-xl first-letter:pr-8">
+
+        <p className="leading-relaxed text-xl first-letter:pr-8 text-center sm:text-right">
           {news?.desc}
         </p>
       </div>
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-10 my-40">
         <p className="font-bold text-xl">تازه ترین اخبار</p>
-        <div className="flex gap-10  border-t-2 border-red-500 pt-10">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-10  border-t-2 border-red-500 pt-10">
           {allNews.slice(0, 4).map((news) => {
             return (
               <div
