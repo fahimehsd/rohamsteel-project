@@ -20,6 +20,12 @@ const Header = () => {
 
   window.addEventListener("scroll", changeColor);
 
+  const searchHandler = (e) => {
+    if (e.which === 13) {
+      navigate("/search", { state: { searched: e.target.value } });
+    }
+  };
+
   const links = [
     {
       id: 1,
@@ -78,7 +84,7 @@ const Header = () => {
         </div>
 
         <div
-          onClick={() => setNav(!nav)}
+          onKeyUp={() => setNav(!nav)}
           className={
             color
               ? "cursor-pointer pr-4 z-10 text-black-500 sm:hidden mt-7 "
@@ -112,6 +118,7 @@ const Header = () => {
         <div className="w-[9rem] sm:w-[20rem] bg-black-200 flex items-center gap-2 p-1 sm:p-2 rounded-md ">
           <AiOutlineSearch size={25} color="gray" />
           <input
+            onKeyUp={(e) => searchHandler(e)}
             type="text"
             placeholder="جست و جو کنید.."
             className="bg-transparent placeholder:text-white outline-none text-xs sm:text-md"
