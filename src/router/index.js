@@ -10,6 +10,7 @@ import MainNews from "../pages/news/MainNews";
 import Contact from "../pages/contact/Contact";
 import NewsDetails from "../pages/newsDetails/NewsDetails";
 import Enter from "../pages/enter/Enter";
+import Search from "../pages/Search";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
         element: [
           <Suspense fallback={<Loading />}>
             <Enter />
+          </Suspense>
+        ]
+      },
+      {
+        path: "/search",
+        element: [
+          <Suspense fallback={<Loading />}>
+            <Search />
           </Suspense>
         ]
       }
