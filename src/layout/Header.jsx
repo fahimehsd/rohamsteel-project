@@ -62,7 +62,7 @@ const Header = () => {
           : "flex justify-between py-3 w-full px-6 bg-transparent text-black fixed z-10 duration-300"
       }
     >
-      <div className=" w-full">
+      <div className="w-full">
         <img
           src={logo}
           alt="شرکت صنایع فولاد رهام پارس"
@@ -84,23 +84,23 @@ const Header = () => {
         </div>
 
         <div
-          onKeyUp={() => setNav(!nav)}
+          onClick={() => setNav(!nav)}
           className={
             color
-              ? "cursor-pointer pr-4 z-10 text-black-500 sm:hidden mt-7 "
-              : "cursor-pointer pr-4 z-10 text-black-100 sm:hidden mt-7"
+              ? "relative cursor-pointer pr-4 z-10 text-black-500 sm:hidden mt-7 "
+              : "relative cursor-pointer pr-4 z-10 text-black-100 sm:hidden mt-7"
           }
         >
           {nav ? <FaTimes size={25} /> : <FaBars size={25} />}
         </div>
 
         {nav && (
-          <div className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient z-10 text-white">
+          <div className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-gradient text-white">
             {links.map(({ id, link, path }) => (
               <Link
+                key={id}
                 onClick={() => setNav(!nav)}
                 to={path}
-                smooth
                 duration={500}
               >
                 <button
